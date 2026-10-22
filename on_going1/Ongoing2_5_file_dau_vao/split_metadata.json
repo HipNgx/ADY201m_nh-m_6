@@ -1,0 +1,29 @@
+{
+  "data_sha256": "c2bb2ee0f9a7f2364ae1457f415de6d30e8b96b268cfec7698abe0230d4d028b",
+  "seed": 42,
+  "method": "StratifiedGroupKFold outer first fold; inner 5 folds",
+  "group_key": [
+    "HighBP",
+    "HighChol",
+    "CholCheck",
+    "BMI",
+    "Smoker",
+    "Stroke",
+    "HeartDiseaseorAttack",
+    "PhysActivity",
+    "Fruits",
+    "Veggies",
+    "HvyAlcoholConsump",
+    "AnyHealthcare",
+    "NoDocbcCost",
+    "GenHlth",
+    "MentHlth",
+    "PhysHlth",
+    "DiffWalk",
+    "Sex",
+    "Age",
+    "Education",
+    "Income"
+  ],
+  "label_in_group_key": false
+}

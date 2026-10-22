@@ -1,0 +1,269 @@
+{
+  "source": "CDC BRFSS2015 LLCP2015XPT.zip",
+  "target": "Diabetes_binary",
+  "target_mapping": {
+    "1": 1,
+    "3": 0,
+    "4": 1
+  },
+  "excluded_target_codes": [
+    2,
+    7,
+    9
+  ],
+  "version": "brfss2015_age30_59_gestational_excluded_v1",
+  "note": "Academic classification of self-reported survey labels; no future-onset prediction.",
+  "population": {
+    "age_years_inclusive": [
+      30,
+      59
+    ],
+    "source_age_column": "_AGEG5YR",
+    "allowed_age_codes": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "employment_filter": null,
+    "gestational_only_diabetes": "exclude rows DIABETE3=2 before target recoding"
+  },
+  "feature_names": [
+    "HighBP",
+    "HighChol",
+    "CholCheck",
+    "BMI",
+    "Smoker",
+    "Stroke",
+    "HeartDiseaseorAttack",
+    "PhysActivity",
+    "Fruits",
+    "Veggies",
+    "HvyAlcoholConsump",
+    "AnyHealthcare",
+    "NoDocbcCost",
+    "GenHlth",
+    "MentHlth",
+    "PhysHlth",
+    "DiffWalk",
+    "Sex",
+    "Age",
+    "Education",
+    "Income"
+  ],
+  "feature_count": 21,
+  "processing": {
+    "missing": "dropna on all 22 selected columns",
+    "survey_codes": "same removal/recoding rules as input notebook, except DIABETE3=2 excluded",
+    "bmi": "divide by 100 and round to integer",
+    "outliers": "retain values passing existing checks; no IQR deletion/capping",
+    "dtypes": "int16",
+    "duplicate_main": "keep",
+    "duplicate_comparison": "drop_duplicates on all 22 columns",
+    "survey_weighted": false,
+    "modeling_performed": false
+  },
+  "cohort_flow": [
+    {
+      "Bước": "Toàn bộ nguồn (22 cột ứng viên)",
+      "Trước": 441456,
+      "Đã loại": 0,
+      "Còn lại": 441456
+    },
+    {
+      "Bước": "Chọn tuổi 30–59; loại ngoài tuổi/không xác định",
+      "Trước": 441456,
+      "Đã loại": 251686,
+      "Còn lại": 189770
+    },
+    {
+      "Bước": "Loại DIABETE3=2 (chỉ khi mang thai)",
+      "Trước": 189770,
+      "Đã loại": 2387,
+      "Còn lại": 187383
+    }
+  ],
+  "cleaning_flow": [
+    {
+      "step": "NaN",
+      "before": 187383,
+      "removed": 41805,
+      "after": 145578
+    },
+    {
+      "step": "DIABETE3",
+      "before": 145578,
+      "removed": 127,
+      "after": 145451
+    },
+    {
+      "step": "_RFHYPE5",
+      "before": 145451,
+      "removed": 179,
+      "after": 145272
+    },
+    {
+      "step": "TOLDHI2",
+      "before": 145272,
+      "removed": 841,
+      "after": 144431
+    },
+    {
+      "step": "_CHOLCHK",
+      "before": 144431,
+      "removed": 1316,
+      "after": 143115
+    },
+    {
+      "step": "_BMI5",
+      "before": 143115,
+      "removed": 0,
+      "after": 143115
+    },
+    {
+      "step": "SMOKE100",
+      "before": 143115,
+      "removed": 749,
+      "after": 142366
+    },
+    {
+      "step": "CVDSTRK3",
+      "before": 142366,
+      "removed": 210,
+      "after": 142156
+    },
+    {
+      "step": "_MICHD",
+      "before": 142156,
+      "removed": 0,
+      "after": 142156
+    },
+    {
+      "step": "_TOTINDA",
+      "before": 142156,
+      "removed": 6987,
+      "after": 135169
+    },
+    {
+      "step": "_FRTLT1",
+      "before": 135169,
+      "removed": 2206,
+      "after": 132963
+    },
+    {
+      "step": "_VEGLT1",
+      "before": 132963,
+      "removed": 1797,
+      "after": 131166
+    },
+    {
+      "step": "_RFDRHV5",
+      "before": 131166,
+      "removed": 1412,
+      "after": 129754
+    },
+    {
+      "step": "HLTHPLN1",
+      "before": 129754,
+      "removed": 201,
+      "after": 129553
+    },
+    {
+      "step": "MEDCOST",
+      "before": 129553,
+      "removed": 152,
+      "after": 129401
+    },
+    {
+      "step": "GENHLTH",
+      "before": 129401,
+      "removed": 169,
+      "after": 129232
+    },
+    {
+      "step": "MENTHLTH",
+      "before": 129232,
+      "removed": 1021,
+      "after": 128211
+    },
+    {
+      "step": "PHYSHLTH",
+      "before": 128211,
+      "removed": 911,
+      "after": 127300
+    },
+    {
+      "step": "DIFFWALK",
+      "before": 127300,
+      "removed": 190,
+      "after": 127110
+    },
+    {
+      "step": "SEX",
+      "before": 127110,
+      "removed": 0,
+      "after": 127110
+    },
+    {
+      "step": "_AGEG5YR",
+      "before": 127110,
+      "removed": 0,
+      "after": 127110
+    },
+    {
+      "step": "EDUCA",
+      "before": 127110,
+      "removed": 101,
+      "after": 127009
+    },
+    {
+      "step": "INCOME2",
+      "before": 127009,
+      "removed": 10347,
+      "after": 116662
+    }
+  ],
+  "validation": {
+    "source_label_mapping_verified": true,
+    "csv_roundtrip_verified": true,
+    "missing_cells_after": 0,
+    "domain_errors": 0
+  },
+  "bmi_iqr": {
+    "lower": 12.0,
+    "upper": 44.0,
+    "outside_count": 3379,
+    "outside_percent": 2.8964015703485284
+  },
+  "datasets": {
+    "cleaned_cdc2015_keep_duplicates.csv": {
+      "rows": 116662,
+      "columns": 22,
+      "duplicate_rows": 13836,
+      "class_counts": {
+        "0": 103921,
+        "1": 12741
+      },
+      "class_percent": {
+        "0": 89.07870600538307,
+        "1": 10.921293994616928
+      }
+    },
+    "cleaned_cdc2015_no_duplicates.csv": {
+      "rows": 102826,
+      "columns": 22,
+      "duplicate_rows": 0,
+      "class_counts": {
+        "0": 90133,
+        "1": 12693
+      },
+      "class_percent": {
+        "0": 87.65584579775543,
+        "1": 12.34415420224457
+      }
+    }
+  },
+  "clean_sha256": "c2bb2ee0f9a7f2364ae1457f415de6d30e8b96b268cfec7698abe0230d4d028b"
+}
