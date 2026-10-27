@@ -3,3 +3,5 @@ on_going2/.runtime/
 data_đầu_vào/.work/
 **/__pycache__/
 **/desktop.ini
+.venv/
+**/.ipynb_checkpoints/
