@@ -1,0 +1,5 @@
+# Generated runtime, models and local reports are not project inputs.
+on_going2/.runtime/
+data_đầu_vào/.work/
+**/__pycache__/
+**/desktop.ini
